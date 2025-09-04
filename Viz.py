@@ -8,6 +8,9 @@ df = pd.read_csv(file_path)
 
 # Convert date columns to datetime
 df['current_job.started_at'] = pd.to_datetime(df['current_job.started_at'], errors='coerce')
+    # This selects the column named "current_job.started_at" from your DataFrame (df) - should fetch date data
+    # Convert those values into datatime objects using pandas' to_datetime function
+    # errors='coerce' means that if any value can't be converted, it will be set to NaT (Not a Time) instead of raising an error
 df['previous_job.ended_at'] = pd.to_datetime(df['previous_job.ended_at'], errors='coerce')
 
 # Create a 'month' column directly for arrivals vs departures

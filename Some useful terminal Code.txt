@@ -1,0 +1,204 @@
+# Some useful terminal Code
+
+========================================
+VS CODE TERMINAL CHEAT SHEET (WINDOWS)
+========================================
+
+Open/close terminal in VS Code:
+  Ctrl + `                             # Toggle integrated terminal
+  (Use the dropdown in terminal panel to open PowerShell / Command Prompt)
+
+Open a folder in VS Code from terminal:
+  code .                               # Open current folder in VS Code
+  code path\to\folder                  # Open specific folder
+
+----------------------------------------
+BASICS: NAVIGATION & FILES
+----------------------------------------
+pwd                                     # Print current directory
+ls                                      # List files
+cd path\to\folder                       # Change directory (.. = up one level)
+mkdir NewFolder                         # Create folder
+del file.txt                            # Delete file (rm file.txt also works in PS)
+rmdir /s /q OldFolder                   # Delete folder recursively (careful!)
+type file.txt                           # Show file contents (cat also works)
+
+----------------------------------------
+PYTHON QUICK COMMANDS
+----------------------------------------
+where python                            # Show which Python is active
+python --version                        # Python version
+python script.py                        # Run a Python script
+python -m pip install packagename       # Use pip from the current Python
+python -c "import sys; print(sys.executable)"   # Show interpreter path
+
+----------------------------------------
+CONDA ENVIRONMENTS
+----------------------------------------
+conda --version                         # Verify conda is installed
+conda info --envs                       # List environments; * marks active
+conda create -n ENVNAME python=3.11     # Create env with Python 3.11
+conda activate ENVNAME                  # Activate env
+conda deactivate                        # Deactivate env
+conda remove -n ENVNAME --all           # Delete env
+conda install numpy pandas              # Install packages via conda
+pip install PACKAGE                     # Install via pip (inside the active env)
+conda list                              # List packages in the active env
+
+Tip: If "conda" not recognized:
+  Start Menu → Anaconda Prompt           # Use the Anaconda shell
+  OR ensure the Anaconda path is added to your system PATH.
+
+----------------------------------------
+SELECT PYTHON INTERPRETER IN VS CODE
+----------------------------------------
+Ctrl + Shift + P → "Python: Select Interpreter"
+Choose the interpreter for your desired conda env (e.g., CTBA).
+
+----------------------------------------
+GIT: FIRST-TIME SETUP
+----------------------------------------
+git --version                           # Verify Git
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global init.defaultBranch main
+
+(Optionally store credentials)
+git config --global credential.helper manager
+
+----------------------------------------
+GIT: CLONE / OPEN REPO
+----------------------------------------
+cd path\where\you\want\the\repo
+git clone https://github.com/USER/REPO.git
+cd REPO
+
+----------------------------------------
+GIT: STATUS / DIFF / LOG
+----------------------------------------
+git status                              # See changes
+git diff                                # Show unstaged diffs
+git log --oneline --graph --decorate    # Pretty commit history
+git show COMMIT_SHA                     # Show a specific commit
+
+----------------------------------------
+GIT: STAGE / COMMIT / PUSH
+----------------------------------------
+git add .                               # Stage all changes
+git add path\to\file.py                 # Stage one file
+git commit -m "Your message"            # Commit staged changes
+git push origin main                    # Push to remote main branch
+
+If branch not tracked yet:
+  git push -u origin your-branch        # Set upstream & push
+
+----------------------------------------
+GIT: PULL / FETCH
+----------------------------------------
+git pull origin main                    # Pull latest into local main
+git fetch                               # Get remote refs (no merge)
+git merge origin/main                   # Merge fetched main into current branch
+
+----------------------------------------
+GIT: BRANCHING
+----------------------------------------
+git branch                              # List branches; * = current
+git checkout -b feature/my-change       # Create & switch to new branch
+git checkout main                       # Switch to main
+git branch -d old-branch                # Delete local branch
+git push origin --delete old-branch     # Delete remote branch
+
+----------------------------------------
+GIT: REMOTES
+----------------------------------------
+git remote -v                           # Show remotes
+git remote add origin URL               # Add a new remote
+git remote set-url origin URL           # Change remote URL (switch SSH/HTTPS)
+
+----------------------------------------
+GIT: STASH (TEMPORARY SAVE)
+----------------------------------------
+git stash                               # Stash current changes
+git pull                                # Update without losing work
+git stash pop                           # Re-apply stashed changes
+git stash list                          # List stashes
+
+----------------------------------------
+GIT: COMMON MERGE CONFLICT WORKFLOW
+----------------------------------------
+git pull origin main                    # Pull updates
+# VS Code marks conflicts with <<<<<<<, =======, >>>>>>>
+# Choose which changes to keep (Accept Current/Incoming/Both), then:
+git add .
+git commit -m "Resolve merge conflicts"
+git push origin main
+
+----------------------------------------
+GIT: .gitignore QUICK START
+----------------------------------------
+# Create a .gitignore file in repo root. Examples:
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+----------------------------------------
+HTTPS vs SSH (PUSH/PULL)
+----------------------------------------
+Use HTTPS (simple):
+  git clone https://github.com/USER/REPO.git
+  # On push, enter GitHub username + token (PAT) when prompted
+
+Use SSH (advanced):
+  ssh-keygen -t ed25519 -C "you@example.com"
+  # Add public key (~/.ssh/id_ed25519.pub) to GitHub → Settings → SSH keys
+  git clone git@github.com:USER/REPO.git
+
+If you see "Permission denied (publickey)":
+  - You cloned with SSH but no valid key is set up.
+  - Either set up keys or switch remote to HTTPS:
+    git remote set-url origin https://github.com/USER/REPO.git
+
+----------------------------------------
+RUNNING DASH (NEW VERSIONS)
+----------------------------------------
+python app.py                           # Run Python file
+# In Dash >= 5:
+app.run(debug=True)                     # Instead of app.run_server(...)
+
+----------------------------------------
+COMMON ERRORS & QUICK FIXES
+----------------------------------------
+"pip not recognized":
+  python -m pip install <package>       # Use pip via Python
+
+"conda not recognized":
+  Open Anaconda Prompt OR add Anaconda to PATH
+
+"cannot assign to attribute here (maybe '==' instead of '=')":
+  # Usually a missing ) ] } or quote before that line; fix earlier syntax.
+
+"Permission denied (publickey)":
+  # SSH keys not set; either configure SSH or switch remote to HTTPS.
+
+"fatal: not a git repository":
+  cd into the repo folder (it must contain a .git folder).
+
+----------------------------------------
+WORKING MODEL: FOLDER vs ENV
+----------------------------------------
+- Folder (repo) = which files you edit (e.g., Team-6)
+- Conda env = which Python runs them (e.g., CTBA)
+Use both together:
+  1) Open repo folder (Team-6) in VS Code
+  2) Select interpreter for CTBA (Ctrl+Shift+P → Python: Select Interpreter)
+  3) Terminal: conda activate CTBA
+
+----------------------------------------
+QUICK ONE-LINERS
+----------------------------------------
+git add . && git commit -m "msg" && git push   # Stage+commit+push
+conda activate CTBA && where python             # Activate env and show python path
+python -m pip install -r requirements.txt       # Install from requirements
+

@@ -3,7 +3,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h2 {
+h2{
+    color: #2c3e50
+}
+
+p {
     font-size: 16px;
     line-height: 1.4;
 }
@@ -12,11 +16,11 @@ a{
     display:inline-block;
     margin: 18px;
     text-decoration: none;
-    border:2px solid #44139e;
+    border:2px solid #ffffff;
     border-radius: 6px;
     padding : 10px 20px;
     background-color : #2c3e50;
-    color : white;
+    color : white !important;
 }
 
 a:hover{
@@ -24,3 +28,92 @@ a:hover{
     background-color : #65ab6e;
 }
 
+/* Page 1 layout -- with blocking --*/
+.page1-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+}
+
+.row-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.block{
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    min-height: 120px;
+    background-color: #f5f7fa;
+    color:#334155; 
+    font-weight: 600;
+}
+
+.block-top{
+    min-height: 140px;
+}
+
+.block-footer{
+    min-height: 80px;
+}
+
+/* Responsive Stack for middle cols on narrow screens --*/
+
+@media (max-width: 768px){
+    .row-2{
+        .row-2 {grid-template-columns: 1fr;} /* when you make the screen smaller it will stack the two middle columns */
+    }
+}
+
+/* Page 2 Blocking for cat fact page */
+.page2-wrap{
+    max-width: 840px;
+    margin:0 auto;
+    padding: 16px;
+}
+
+.page-title{
+    font-size: 28px;
+    color: #1f2937;
+    margin-top: 6px;
+}
+
+.page-subtitle{
+    color: #475569;
+    margin-top: 14px;
+}
+
+/* We can style the cat fact ids using a #before each id */
+/* Note above - all classes have a decimal before them */
+#btn-cat{
+    display: inline-block;
+    font-size: 18px;
+    border: 2px solid #1f2937;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background-color: #0ea5e9;
+    color: white;
+}
+
+#btn-cat:hover{
+    background-color: #0284c7;
+}
+
+#cat-fact{
+    display: block;
+    padding: 14px 16px;
+    background-color: white;
+    color: #1f2937;
+    font-size: 18px;
+    line-height: 1.5;
+    border: 3px solid #11243b;
+    border-radius: 10px;
+    min-height: 72px;
+    margin-top: 15px;
+
+}

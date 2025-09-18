@@ -1,79 +1,75 @@
 body {
-    background-color: #f0f0f0 !important;
+    background-color: #DFEBE0 !important;
     font-family: Arial, sans-serif;
 }
 
 h2{
-    color: #2c3e50
+    color: #2c3e50;
 }
-
-p {
+p{
     font-size: 16px;
     line-height: 1.4;
 }
 
-a{
+a {
     display:inline-block;
-    margin: 18px;
+    margin:18px;
     text-decoration: none;
-    border:2px solid #ffffff;
-    border-radius: 6px;
-    padding : 10px 20px;
-    background-color : #2c3e50;
-    color : white !important;
+    border: 2px solid #ffffff;
+    border-radius:6px;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: #ffffff;
+
 }
 
 a:hover{
-    text-decoration:underline;
-    background-color : #65ab6e;
+    text-decoration: underline;
+    background-color: #65Ab6E;
 }
 
-/* Page 1 layout -- with blocking --*/
+/*Page 1 styles for blocking elements */
 .page1-grid{
-    display: flex;
+    display:flex;
     flex-direction: column;
-    gap: 12px;
     padding: 12px;
+    gap:12px;
 }
 
-.row-2{
+.row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 12px;
 }
 
 .block{
     border: 2px dashed #cbd5e1;
     border-radius: 8px;
-    display: flex;
-    align-items:center;
-    justify-content: center;
+    background-color: #F5F7Fa;
+    color: #334155;
     min-height: 120px;
-    background-color: #f5f7fa;
-    color:#334155; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 600;
 }
 
 .block-top{
-    min-height: 140px;
+    min-height: 150px;
 }
 
 .block-footer{
     min-height: 80px;
 }
 
-/* Responsive Stack for middle cols on narrow screens --*/
-
-@media (max-width: 768px){
-    .row-2{
-        .row-2 {grid-template-columns: 1fr;} /* when you make the screen smaller it will stack the two middle columns */
-    }
+@media (max-width:768px){
+    .row-2{grid-template-columns: 1fr;}
 }
 
-/* Page 2 Blocking for cat fact page */
+/* Page 2 Blocking and Cat Facts Styles*/
 .page2-wrap{
     max-width: 840px;
-    margin:0 auto;
+    margin: 0 auto;
     padding: 16px;
 }
 
@@ -85,35 +81,36 @@ a:hover{
 
 .page-subtitle{
     color: #475569;
-    margin-top: 14px;
+    margin-top: 15px;
 }
 
-/* We can style the cat fact ids using a #before each id */
-/* Note above - all classes have a decimal before them */
+/*cat fact id styling --- id's are styled with the #id while classes have the decimal. 
+before the class*/
+
 #btn-cat{
-    display: inline-block;
+    display:inline-block;
     font-size: 18px;
-    border: 2px solid #1f2937;
     padding: 10px 18px;
+    border: 2px solid #1f2937;
     border-radius: 8px;
     background-color: #0ea5e9;
-    color: white;
+    color:#ffffff;
 }
 
 #btn-cat:hover{
-    background-color: #0284c7;
+    background-color: #1b4355;
 }
 
 #cat-fact{
-    display: block;
+    display:block;
+    margin-top:14px;
     padding: 14px 16px;
-    background-color: white;
-    color: #1f2937;
-    font-size: 18px;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size:18px;
     line-height: 1.5;
-    border: 3px solid #11243b;
-    border-radius: 10px;
+    border: 2px solid #1f2937;
+    border-radius: 8px;
     min-height: 72px;
-    margin-top: 15px;
 
 }
